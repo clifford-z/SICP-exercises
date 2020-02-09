@@ -1,0 +1,7 @@
+# Compressed File
+*.zip
+
+# Dr.Racket File
+*.bak
+*.dep
+*.zo
