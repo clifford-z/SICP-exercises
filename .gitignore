@@ -5,3 +5,7 @@
 *.bak
 *.dep
 *.zo
+
+# Vedio and Notes
+/Vedio
+/Notes
