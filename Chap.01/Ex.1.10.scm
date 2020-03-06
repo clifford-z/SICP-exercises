@@ -12,10 +12,13 @@
 
 ; Pass function name as parameter to evoke corresponding function
 (define (first10terms func)
-  (let n 10)
+  (define n 10)
   (term-iter func n)
   )
 
-(define term-iter func counter
+(define (term-iter func counter)
   (if (= counter 0)
+      "end"
+      ((func counter)
+       (- counter 1))))
       
