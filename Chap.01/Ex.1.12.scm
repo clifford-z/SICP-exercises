@@ -1,4 +1,4 @@
-#lang racket/load
+#lang sicp
 ; 每个 pascal(row, col) 由 pascal(row-1, col-1) (左上边的元素)
 ; 和 pascal(row-1, col) (右上边的元素)组成
 
