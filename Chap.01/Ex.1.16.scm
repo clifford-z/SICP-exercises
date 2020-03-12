@@ -16,6 +16,8 @@
 ; Solution
 ;;; 16-fast-expt.scm
 
+(#%require "math.scm")
+
 (define (fast-expt b n)
     (expt-iter b n 1))
 
@@ -23,7 +25,7 @@
     (cond ((= n 0)
             a)
           ((even? n)
-            (expt-iter (sqrt b)
+            (expt-iter (square b)
                        (/ n 2)
                        a))
           ((odd? n)
