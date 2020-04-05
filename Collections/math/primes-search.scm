@@ -1,11 +1,10 @@
 #lang racket
-(#%require "../Collections/math/basic.scm")
-(#%require "../Collections/math/fermat-test.scm")
 
-(define (prime? n)
-    (fast-prime? n 10))
+(#%require "basic.scm")
+(#%require "prime.scm")
+; Export package
+(provide (all-defined-out))
 
-; Primes search
 (define (next-odd n)
     (if (odd? n)
         (+ 2 n)
@@ -25,8 +24,3 @@
 (define (search-for-primes n)
   (time (successive-primes n 3))
   (newline))
-
-(search-for-primes 10000000000000) ;1e13
-(search-for-primes 100000000000000) ;1e14
-(search-for-primes 1000000000000000) ;1e15
-(search-for-primes 10000000000000000) ;1e16
