@@ -6,13 +6,16 @@
 (define (average a b)
   (/ (+ a b) 2))
 
+
 ; Square
 (define (square x)
   (* x x))
 
+
 ; Devides?
 (define (divides? a b)
   (= (remainder b a) 0))
+
 
 ; Factorial, Iteration
 (define (factorial n)
@@ -25,11 +28,13 @@
                  (+ counter 1)
                  max-count)))
 
+
 ; Exponent, Recursive
 (define (expt b n)
   (if (= n 0)
       1
       (* b (expt b (- n 1)))))
+
 
 ; Fast-Exponent
 (define (fast-expt b n)
@@ -37,11 +42,13 @@
        ((even? n) (square (fast-expt b (/ n 2))))
        (else (* b (fast-expt b (- n 1))))))
 
+
 ; Greatest common factor
 (define (gcd a b)
   (if (= b 0)
       a
       (gcd b (remainder a b))))
+
 
 ; Find divisor
 (define (find-divisor n test-divisor)
@@ -63,6 +70,7 @@
         3
         (+ n 2)))
 
+
 ; Fermat test
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
@@ -82,6 +90,7 @@
   (cond ((= times 0) true)
         ((fermat-test n) (fast-prime? n (- times 1)))
         (else false)))
+
 
 ; Half-interval roots finding
 (define (search f neg-point pos-point)
@@ -108,6 +117,7 @@
           (else
            (error "values are not opposite sign" a b)))))
 
+
 ; Fixed-point finding
 (define (fixed-point f first-guess)
   (define tolerance 0.00001)
@@ -120,6 +130,7 @@
           (try next))))
   (try first-guess))
 
+
 ; Derivative
  (define (deriv g)
    (let ((dx 0.00001))
@@ -127,3 +138,58 @@
             (/ (g (+ x dx) (g x))
                dx))))
    
+(define (linear-combination a b x y)
+  (+ (* a x) (* b y)))
+
+(define (linear-combination a b x y)
+  (add (mul a x) (mul b y))) 
+
+
+; Rational number defination
+(define (add-rat x y)
+  (make-rat (+ (* (numer x) (denom y))
+               (* (numer y) (denom x)))
+            (* (denom x) (denom y))))
+
+(define (sub-rat x y)
+  (make-rat (- (* (numer x) (denom y))
+               (* (numer y) (denom x)))
+            (* (denom x) (denom y))))
+
+(define (mul-rat x y)
+  (make-rat (* (numer x) (numer y))
+            (* (denom x) (denom y))))
+
+(define (div-rat x y)
+  (make-rat (* (numer x) (denom y))
+            (* (denom x) (numer y))))
+
+(define (equal-rat? x y)
+  (= (* (numer x) (denom y))
+     (* (numer y) (denom x))))
+
+(define (make-rat n d)
+  (cons n d))
+
+; Reduce numerator when invoked
+(define (numer x)
+  (let ((g (gcd (car x) (cdr x))))
+    (/ (car x) g)))
+
+; Reduce denominator when invoked
+(define (denom x)
+  (let ((g (gcd (car x) (cdr x))))
+    (/ (cdr x) g)))
+
+; Reduce when constructed
+; (define (make-rat n d)
+;   (let ((g (gcd n d)))
+;     (cons (/ n g) (/ d g))))
+; (define (numer x) (car x))
+; (define (denom x) (cdr x))
+
+(define (print-rat x)
+  (newline)
+  (display (numer x))
+  (display "/")
+  (display (denom x)))
