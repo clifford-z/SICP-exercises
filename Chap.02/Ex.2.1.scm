@@ -31,7 +31,8 @@
 ; Refined make-rat
 (define (make-rat n d)
   (let ((g (gcd (abs n) (abs d))))
-        (cond ((or (and (> n 0) (> d 0)) (and (< n 0) (< d 0)))
-               (cons (abs (/ n g)) (abs (/ d g))))
-              (else (cons (* -1 (/ n g)) (abs (/ d g)))))))
+    (if (< d 0)
+        (cons (- (/ n g)) (- (/ d g)))
+        (cons (/ n g) (/ d g)))))
+    
          
