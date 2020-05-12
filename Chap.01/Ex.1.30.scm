@@ -4,8 +4,8 @@
   (define (iter a result)
     (if (> a b)
         result
-        (iter (next a) (+ result (term (next a))))))
-  (iter 0 0))
+        (iter (next a) (+ result (term a)))))
+  (iter a 0))
 
 ; Cube
 (define (cube x)
