@@ -10,6 +10,10 @@
 (define (square x)
   (* x x))
 
+; Cube
+(define (cube x)
+  (* x x x))
+
 ; Devides?
 (define (divides? a b)
   (= (remainder b a) 0))
@@ -49,3 +53,10 @@
      (lambda (x)
             (/ (g (+ x dx) (g x))
                dx))))
+
+; Sum
+(define (sum term a next b)
+  (if (> a b)
+      0
+      (+ (term a)
+         (sum term (next a) next b))))

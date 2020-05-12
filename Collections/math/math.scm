@@ -11,6 +11,9 @@
 (define (square x)
   (* x x))
 
+; Cube
+(define (cube x)
+  (* x x x))
 
 ; Devides?
 (define (divides? a b)
@@ -90,6 +93,14 @@
   (cond ((= times 0) true)
         ((fermat-test n) (fast-prime? n (- times 1)))
         (else false)))
+
+
+; Sum
+(define (sum term a next b)
+  (if (> a b)
+      0
+      (+ (term a)
+         (sum term (next a) next b))))
 
 
 ; Half-interval roots finding
