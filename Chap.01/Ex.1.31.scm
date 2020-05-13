@@ -8,9 +8,12 @@
 
 (define (pi-product a b)
   (define (term n)
-    (cond ((= n 1) (/ 2 3))
-          ((even? n) (/ (+ n 2) (+ n 1)))
-          (else (/ (+ n 1) (+ n 2)))))
+    (if (odd? n)
+        (/ (+ n 1) (+ n 2))
+        (/ (+ n 2) (+ n 1))))
   (define (next a)
     (+ a 1))
   (product term a next b))
+
+(* 4 (pi-product 1 1000))
+(* 4 (pi-product 1 1000000))
